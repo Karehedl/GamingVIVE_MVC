@@ -1,0 +1,55 @@
+﻿.price {
+    height: auto;
+    background-color: rgb(188, 224, 225);
+    font-size: 20px;
+    margin-bottom: 0;
+    margin-left: auto;
+    margin-right: 0;
+}
+
+.game {
+    border: 1px solid black;
+    height: 105px;
+    width: 230px;
+    background-color: aqua;
+    margin: 20px;
+    margin-right: 35px;
+}
+
+    .game:hover {
+        height: 110px;
+        width: 235px; /* This is the height on hover */
+    }
+
+.createBar {
+    height: 30px;
+    width: 100%;
+    display: flex;
+    border: 2px solid black;
+}
+
+.button {
+    border: 1px solid black;
+    height: 100%;
+}
+
+.gamebox {
+    height: auto;
+    width: 100%;
+    padding: 3%;
+    flex-wrap: wrap;
+    display: flex;
+}
+
+.gameNav {
+    color: black;
+    text-decoration: none;
+    border: 2px solid black;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+}
+
+.connectionBox {
+    font-size: small;
+}

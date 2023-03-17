@@ -1,0 +1,76 @@
+﻿@using GamingVIVE.Models.GenreGameModels
+
+@model IEnumerable<GenreGameListItem>
+
+<div style="border-bottom: 2px solid black;">
+    <h3 class="display-4" style="text-align:center; color: aqua;">Connections</h3>
+</div>
+
+<nav class="gameNav">
+    <a style=" text-decoration: none; color: black; margin-right: 2%;" asp-controller="Game" asp-action="GameSettings">Games</a>
+    <a style="text-decoration:none; color: black; margin-right:2%;" asp-controller="GamingSystem" asp-action="GamingSystemSettings">Gaming Systems</a>
+    <a style="text-decoration:none; color:black; margin-right:2%;" asp-controller="Genre" asp-action="GenreSettings">Genres</a>
+    <a style="text-decoration:none; color:black; margin-right:2%;" asp-controller="MontizedCategory" asp-action="MontizedCategorySettings">Categories</a>
+    <a style="text-decoration:none; color:grey; margin-right:2%;" asp-controller="GamingSystemGame" asp-action="ConnectionSettings">Connections</a>
+</nav>
+
+<div style="border-bottom: 2px solid black;">
+    <h3 class="display-3" style="text-align:center; color: Grey; font-size:40px;"> Genre Connections</h3>
+</div>
+
+<nav class="gameNav">
+    <a style="text-decoration:none; color:black; margin-right:2%;" asp-controller="GamingSystemGame" asp-action="ConnectionSettings">GamingSystem Connections</a>
+    <a style="text-decoration:none; color:grey; margin-right:2%;" asp-controller="GenreGame" asp-action="GenreConnectionSettings">Genre Connections</a>
+    <a style="text-decoration:none; color:black; margin-right:2%;" asp-controller="MontizedCategoryGame" asp-action="CategoryConnectionSettings">Category Connections</a>
+</nav>
+
+
+<div class="createBar">
+    <a style="text-decoration:none; color: white; margin-right: 3px; margin-left: 3px;" asp-controller="GenreGame" asp-action="Create">Add Game to Genre</a>   |
+</div>
+
+<h1 class="connectionBox">  Connections: A way to add/edit/delete a game from or to a game pathway such as GamingSystems, Genre, and Categories. </h1>
+
+<div class="gamebox">
+    <table class="table">
+        <thead>
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.GenreId)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.GameId)
+                </th>
+                <th>
+                    Connection @Html.DisplayNameFor(model => model.Id)
+                </th>
+                <th>
+
+                </th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.GenreId)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.GameId)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Id)
+                    </td>
+                    <td>
+                        <a style="text-decoration:none; color:black; margin-right:2%;" asp-controller="GenreGame" asp-action="DeleteGenreConnection" asp-route-Id="@item.Id">Delete</a> |
+
+                        <a style="text-decoration:none; color:black; margin-right:2%;" asp-controller="GenreGame" asp-action="EditGenreConnection" asp-route-Id="@item.Id">Edit</a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+    <hr />
+</div>
+

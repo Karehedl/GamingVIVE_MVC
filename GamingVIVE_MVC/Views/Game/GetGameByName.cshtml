@@ -1,0 +1,58 @@
+﻿@model GamingVIVE.Models.GameModels.GameDetails
+
+@{
+    ViewData["Title"] = "GetGameByName";
+}
+
+<div style="width:100; border:2px solid black;">
+    <a asp-action="Index" style="text-decoration:none; color: white;">Back to Games</a>
+</div>
+<div style="width:100; border:2px solid black; ">
+    <h3 class="display-4" style="text-align:center; color: aqua;">@Html.DisplayFor(model => model.Name)</h3>
+</div>
+
+<div style="display:flex; width:100%;">
+    <img src="@Html.DisplayFor(model => model.Picture)" style="height:50%; width:50%;" alt="@Html.DisplayFor(model => model.Picture)" />
+
+    <div style="padding:25px">
+        <dl class="row" style="margin-left:3px;">
+            <dt class="col-sm-3">
+                @Html.DisplayNameFor(model => model.Rating)
+            </dt>
+            <dd class="col-sm-7">
+                @Html.DisplayFor(model => model.Rating)
+            </dd>
+            <dt class="col-sm-3">
+                @Html.DisplayNameFor(model => model.Description)
+            </dt>
+            <dd class="col-sm-7">
+                @Html.DisplayFor(model => model.Description)
+            </dd>
+            <dt class="col-sm-3">
+                @Html.DisplayNameFor(model => model.Price)
+            </dt>
+            <dd class="col-sm-7">
+                @Html.DisplayFor(model => model.Price)
+            </dd>
+            <dt class="col-sm-3">
+                @Html.DisplayNameFor(model => model.Publisher)
+            </dt>
+            <dd class="col-sm-7">
+                @Html.DisplayFor(model => model.Publisher)
+            </dd>
+            <dt class="col-sm-3">
+                @Html.DisplayNameFor(model => model.ReleaseDate)
+            </dt>
+            <dd class="col-sm-7">
+                @Html.DisplayFor(model => model.ReleaseDate)
+            </dd>
+        </dl>
+    </div>
+
+</div>
+
+<div style="width:100; background-color:aqua; border: 2px solid black; display:flex;">
+    <a class="display-4" style="margin: 0 auto; color: white; text-decoration:none; font:bold;" asp-action="#">BUY</a>
+</div>
+
+

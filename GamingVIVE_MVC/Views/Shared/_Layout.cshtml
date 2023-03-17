@@ -1,0 +1,67 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - GamingVIVE</title>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/GamingVIVE_MVC.styles.css" asp-append-version="true" />
+</head>
+<body class ="bg-dark">
+    <header >
+        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-dark bg-dark border-bottom box-shadow mb-3" style="margin-bottom:0px;">
+            <div class="container-fluid">
+                <a class="nav-link " style="color:aqua;" asp-area="" asp-controller="Game" asp-action="Index">GamingVIVE</a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" aria-controls="navbarSupportedContent"
+                        aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
+                    <ul class="navbar-nav flex-grow-1">
+                        <li class="nav-item">
+                            <a class="nav-link"  asp-area="" asp-controller="Game" asp-action="Index">Games</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" asp-area="" asp-controller="GamingSystem" asp-action="Index">GamingSystems</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" asp-area="" asp-controller="Genre" asp-action="Index">Genres</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" asp-area="" asp-controller="MontizedCategory" asp-action="Index">Categories</a>
+                        </li>
+                        <li class="nav-item">
+                            <form method="get" style="margin-left: 320px; margin-top:7px;" action="@Url.Action("GetGameByName", "Game")">
+                                <input type="text" name="search" id="search" placeholder="Find Game By Name" />
+                                <button type="submit" class="button">Search</button>
+                            </form>
+                        </li>
+                    </ul>
+                    <div style="border-left: 1px solid aqua;">
+                        <partial name="_LoginPartial" />
+                    </div>
+                </div>
+            </div>
+        </nav>
+    </header>
+    <div class="body">
+        <div class="inner">
+            <main role="main" class="pb-3">
+                @RenderBody()
+            </main>            
+        </div>
+    </div>
+
+    <footer class="border-top footer text-muted">
+        <div class="container" style="display:flex;">
+            &copy; 2023 - GamingVIVE_MVC - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
+            <a class="nav-link" style="margin-left: 800px;" asp-area="" asp-controller="Game" asp-action="GameSettings">Settings</a>
+        </div>
+    </footer>
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="~/js/site.js" asp-append-version="true"></script>
+    @await RenderSectionAsync("Scripts", required: false)
+</body>
+</html>

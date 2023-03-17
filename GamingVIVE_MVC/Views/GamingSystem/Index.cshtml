@@ -1,0 +1,32 @@
+﻿@using GamingVIVE.Models.GamingSystemModels;
+
+@model IEnumerable<GamingSystemListItem>
+
+<div>
+    <h3 class="display-4" style="text-align:center; color: aqua; text-decoration:none;">Gaming Systems</h3>
+</div>
+
+<nav class="gameNav">
+    <form method="get" style="margin-left: auto;" action="@Url.Action("GetGamingSystemByName", "GamingSystem")">
+        <input type="text" name="search" id="search" placeholder="Find System By Name" /> 
+        <button type="submit" class="button">Search</button>
+    </form>
+</nav>
+
+
+
+<div class="gamebox">
+    @foreach (var item in Model)
+    {
+        <a style="text-decoration:none; color:black;" asp-controller="GamingSystem" asp-action="GetGamingSystemById" asp-route-GamingSystemId=" @item.GamingSystemId">
+            <div class="game">
+
+                <div style="display:flex; height:100%; width:100%;">
+                    <h1 style="font-size:20px; font:bolder; margin: auto; flex-wrap:wrap; ">@item.Name</h1>
+                </div>
+
+            </div>
+        </a>
+
+    }
+</div>

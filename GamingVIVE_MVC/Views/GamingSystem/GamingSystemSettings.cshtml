@@ -1,0 +1,65 @@
+﻿@using GamingVIVE.Models.GamingSystemModels;
+
+@model IEnumerable<GamingSystemListItem>
+
+<div>
+    <h3 class="display-4" style="text-align:center; color: aqua; text-decoration:none;">Gaming Systems</h3>
+</div>
+
+<nav class="gameNav">
+    <a style=" text-decoration: none; color: black; margin-right: 2%;" asp-controller="Game" asp-action="GameSettings">Games</a>
+    <a style="text-decoration:none; color: grey; margin-right:2%;" asp-controller="GamingSystem" asp-action="GamingSystemSettings">Gaming Systems</a>
+    <a style="text-decoration:none; color:black; margin-right:2%;" asp-controller="Genre" asp-action="GenreSettings">Genres</a>
+    <a style="text-decoration:none; color:black; margin-right:2%;" asp-controller="MontizedCategory" asp-action="MontizedCategorySettings">Categories</a>
+    <a style="text-decoration:none; color:black; margin-right:2%;" asp-controller="GamingSystemGame" asp-action="ConnectionSettings">Connections</a>
+</nav>
+
+<div class="createBar">
+    <a style="text-decoration:none; color: white; margin-right: 3px; margin-left: 3px;" asp-controller="GamingSystem" asp-action="Create">Create Gaming System</a>   |
+    <a style="text-decoration:none; color: white; margin-right: 3px; margin-left: 3px;" asp-controller="#" asp-action="#">Connctions</a>   |
+
+    <div class="navbar-left" style=" margin-left: auto; display:flex;">
+        <form method="get" style="margin-left: auto;" action="@Url.Action("GetGamingSystemByNameSettings", "GamingSystem")">
+            <input type="text" name="search" id="search" placeholder="Find System By Name" />
+            <button type="submit" class="button">Search</button>
+        </form>
+
+        @using (Html.BeginForm("GetGaminSystemByIdSettings", "GamingSystem", FormMethod.Get))
+        {
+            <ul class="nav navbar-nav" style="display:flex;">
+                <li>
+                    @Html.TextBox("GamingSystemId",null, new { @style= "height: 100%;" , @placeholder = "Find System By Id"})
+                    <input style="font-size:15px;" type="submit" value="Search" placeholder="SearchById" />
+                </li>
+            </ul>
+        }
+    </div>
+</div>
+
+<h1 class="connectionBox">  Connections: A way to add/edit/delete a game from or to a game pathway such as GamingSystems, Genre, and Categories. </h1>
+
+
+
+<div class="gamebox">
+    @foreach (var item in Model)
+    {
+        <a style="text-decoration:none; color:black;" asp-controller="GamingSystem" asp-action="GetGamingSystemByIdSettings" asp-route-GamingSystemId="@item.GamingSystemId">
+            <div class="game">
+
+                <div style="display:flex; height:80%; width:100%;">
+                    <h1 style="font-size:20px; font:bolder; margin: auto; flex-wrap:wrap; ">@item.Name</h1>    
+                    <h1 style="font-size:20px; font:bolder; margin: auto; flex-wrap:wrap; ">@item.GamingSystemId</h1>
+                </div>
+
+
+                <div style="background-color:antiquewhite; height:20%; text-align:center;">
+                    <a style="text-decoration:none; color:black; margin-right:2%;" asp-controller="GamingSystem" asp-action="DeleteGamingSystem" asp-route-GamingSystemId="@item.GamingSystemId">Delete</a>
+
+                    <a style="text-decoration:none; color:black; margin-right:2%;" asp-controller="GamingSystem" asp-action="EditGamingSystem" asp-route-GamingSystemId="@item.GamingSystemId">Edit</a>
+                </div>
+
+            </div>
+        </a>
+
+    }
+</div>

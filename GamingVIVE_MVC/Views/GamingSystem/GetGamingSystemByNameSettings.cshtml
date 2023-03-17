@@ -1,0 +1,48 @@
+﻿@model GamingVIVE.Models.GamingSystemModels.GamingSystemDetails
+
+@{
+    ViewData["Title"] = "GetGamingSystemByName";
+}
+
+<div style="width:100; border:2px solid black;">
+    <a asp-action="GamingSystemSettings" style="text-decoration:none; color: white;">Back to GamingSystems</a>
+</div>
+<div style="width:100; border:2px solid black; ">
+    <h3 class="display-4" style="text-align:center; color: aqua;">@Html.DisplayFor(model => model.Name)</h3>
+</div>
+
+
+
+<div style="display:flex; width:100%;">
+    <div style="padding:25px; width: 100%; ">
+        <dl class="row" style="margin-left:10px; width: 100%; ">
+            <dt class="col-sm-3 ">
+                @Html.DisplayNameFor(model => model.GamingSystemId)
+            </dt>
+            <dd class="col-sm-7">
+                @Html.DisplayFor(model => model.GamingSystemId)
+            </dd>
+            <dt class="col-sm-3">
+                <h1 style="font-size: 20px;">@Html.DisplayNameFor(model => model.Games) (Id,Name)</h1>
+            </dt>
+            <dd class="col-sm-7">
+                <div style=" height: 50px; overflow-x: hidden; overflow-y: scroll;">
+                    @foreach (var item in Model.Games)
+                    {
+                        <h1 style="font-size: 20px; font: thin;">(@item.GameId,@item.Name)</h1>
+                    }
+                </div>
+
+            </dd>
+        </dl>
+    </div>
+
+</div>
+
+<div style="background-color:antiquewhite; height: 40px; ">
+    <a style="text-decoration:none;" asp-controller="GamingSystem" asp-action="DeleteGamingSystem" asp-route-GamingSystemId="@Model?.GamingSystemId">Delete</a> |
+    <a style="text-decoration:none;" asp-controller="GamingSystem" asp-action="EditGamingSystem" asp-route-GamingSystemId="@Model?.GamingSystemId">Edit</a> |
+    <a style="text-decoration:none;" asp-controller="#" asp-action="#" asp-route-GamingSystemId="@Model?.GamingSystemId">Connections</a> |
+</div>
+
+

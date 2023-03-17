@@ -1,0 +1,35 @@
+﻿@using GamingVIVE.Models.GenreModels;
+
+@model IEnumerable<GenreListItem>
+
+<div class="background">
+
+    <div>
+        <h3 class="display-4" style="color:aqua; text-align:center; text-decoration:underline; text-decoration-thickness:2px;">Genres</h3>
+    </div>
+
+    <nav class="gameNav">
+        <form method="get" style="margin-left: auto;" action="@Url.Action("GetGenreByName", "Genre")">
+            <input type="text" name="search" id="search" placeholder="Find Genre By Name" />
+            <button type="submit" class="button">Search</button>
+        </form>
+    </nav>
+
+
+
+    <div class="gamebox">
+        @foreach (var item in Model)
+        {
+            <a style="text-decoration:none; color:black;" asp-controller="Genre" asp-action="GetGenreById" asp-route-GenreId=" @item.GenreId">
+                <div class="game">
+
+                    <div style="display:flex; height:100%; width:100%;">
+                        <h1 style="font-size:20px; font:bolder; margin: auto; flex-wrap:wrap; ">@item.Name</h1>
+                    </div>
+
+                </div>
+            </a>
+
+        }
+    </div>
+</div>

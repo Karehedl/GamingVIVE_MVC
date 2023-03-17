@@ -1,0 +1,18 @@
+﻿using System;
+using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace GamingVIVE.Models.GamingSystemModels
+{
+    public class GamingSystemCreate
+    {
+        [Required]
+        [MaxLength(50, ErrorMessage = "Can not exceed 50 characters.")]
+        public string Name { get; set; } = null!;
+        //public List<int> GameIds { get; set; }
+
+    }
+}
